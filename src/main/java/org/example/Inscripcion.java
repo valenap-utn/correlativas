@@ -10,6 +10,11 @@ public class Inscripcion {
     @Setter private Alumno alumno;
     @Setter private LocalDateTime fechaDeEvaluacion;
 
+    public Inscripcion(Set<Materia> materiasSolicitadas, Alumno alumno) {
+        this.materiasSolicitadas = materiasSolicitadas;
+        this.alumno = alumno;
+    }
+
     public boolean aprobada(){
         return this.materiasSolicitadas.stream().allMatch(m -> m.cumpleCorrelativas(alumno.getMateriasAprobadas()));
     }

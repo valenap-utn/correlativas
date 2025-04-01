@@ -12,17 +12,12 @@ public class AlumnoTest {
     @Test
     @DisplayName("Test: Verificar materias aprobadas del alumno")
     public void VerificarMateriasAprobadasDelAlumno() {
-        Materia ingles1 = new Materia();
-        ingles1.setNombre("Ingles1");
+        Materia ingles1 = new Materia("Ingles1");
 
-        Materia ingles2 = new Materia();
-        ingles2.setNombre("Ingles2");
+        Materia ingles2 = new Materia("Ingles2");
         ingles2.setCorrelativas(Set.of(ingles1));
 
-        Alumno alumno = new Alumno();
-        alumno.setNombre("Rufina");
-        alumno.setApellido("Gonzalez");
-        alumno.setEdad(21);
+        Alumno alumno = new Alumno("Rufina","Gonzalez",21);
         alumno.agregarMateriaAprobada(ingles1);
 
         //Verifico que el alumno tiene aprobada una Materia

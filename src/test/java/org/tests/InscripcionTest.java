@@ -15,22 +15,15 @@ public class InscripcionTest {
     @Test
     @DisplayName("Test: Verificar que el alumno cumple con las condiciones para la Inscripción")
     public void VerificarAlumnoCumpleCondicionesParaInscripcion() {
-        Materia ingles1 = new Materia();
-        ingles1.setNombre("Ingles1");
+        Materia ingles1 = new Materia("Ingles1");
 
-        Materia ingles2 = new Materia();
-        ingles2.setNombre("Ingles2");
+        Materia ingles2 = new Materia("Ingles2");
         ingles2.setCorrelativas(Set.of(ingles1));
 
-        Alumno alumno = new Alumno();
-        alumno.setNombre("Rufina");
-        alumno.setApellido("Gonzalez");
-        alumno.setEdad(21);
+        Alumno alumno = new Alumno("Rufina","Gonzalez",21);
         alumno.agregarMateriaAprobada(ingles1);
 
-        Inscripcion inscripcion = new Inscripcion();
-        inscripcion.setAlumno(alumno);
-        inscripcion.setMateriasSolicitadas(Set.of(ingles2));
+        Inscripcion inscripcion = new Inscripcion(Set.of(ingles2),alumno);
 
         //Verifico que el alumno puede realizar la inscripcion
         assertTrue(inscripcion.aprobada());
@@ -39,25 +32,17 @@ public class InscripcionTest {
     @Test
     @DisplayName("Test: Verificar que el alumno NO cumple con las condiciones para la Inscripción")
     public void VerificarAlumnoNOCumpleCondicionesParaInscripcion() {
-        Materia ingles1 = new Materia();
-        ingles1.setNombre("Ingles1");
+        Materia ingles1 = new Materia("Ingles1");
 
-        Materia syo = new Materia();
-        syo.setNombre("SyO");
+        Materia syo = new Materia("SyO");
 
-        Materia ads = new Materia();
-        ads.setNombre("AdS");
+        Materia ads = new Materia("AdS");
         ads.setCorrelativas(Set.of(syo));
 
-        Alumno alumno = new Alumno();
-        alumno.setNombre("Rufina");
-        alumno.setApellido("Gonzalez");
-        alumno.setEdad(21);
+        Alumno alumno = new Alumno("Rufina","Gonzalez",21);
         alumno.agregarMateriaAprobada(ingles1);
 
-        Inscripcion inscripcion2 = new Inscripcion();
-        inscripcion2.setAlumno(alumno);
-        inscripcion2.setMateriasSolicitadas(Set.of(syo,ads));
+        Inscripcion inscripcion2 = new Inscripcion(Set.of(syo,ads),alumno);
 
         //Verifico que el alumno NO puede realizar la inscripcion
         assertFalse(inscripcion2.aprobada());

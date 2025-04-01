@@ -9,6 +9,10 @@ public class Materia {
     @Setter private String nombre;
     @Setter private Set<Materia> correlativas = new HashSet<>();
 
+    public Materia(String nombre) {
+        this.nombre = nombre;
+    }
+
     public boolean cumpleCorrelativas(Set<Materia> materiasAprobadas){
         return correlativas.isEmpty() || materiasAprobadas.containsAll(correlativas);
     }
